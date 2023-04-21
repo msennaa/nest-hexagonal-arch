@@ -9,15 +9,16 @@ import { List } from './entities/list.entity';
 @Injectable()
 export class ListsService {
   constructor(
-    @Inject('ListGatewayInterface')
-    private listGateway: ListGatewayInterface,
-    private httpService: HttpService,
+    @Inject('ListPersistenceGateway')
+    private ListPersistenceGateway: ListGatewayInterface,
+    @Inject('ListIntegrationGateway')
+    private ListIntegrationGateway: ListGatewayInterface,
   ) {}
 
   async create(createListDto: CreateListDto) {
     const list = new List(createListDto.name);
-    await this.listGateway.create(list);
-    await lastValueFrom(this.httpService.post('lists', { name: list.name }));
+    await this.ListPersistenceGateway.create(list);
+    await this.ListIntegrationGateway.create(list);
     return list;
   }
 
