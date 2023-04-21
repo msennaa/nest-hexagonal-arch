@@ -23,11 +23,11 @@ export class ListsService {
   }
 
   async findAll() {
-    return this.listGateway.findAll();
+    return this.ListPersistenceGateway.findAll();
   }
 
   async findOne(id: number) {
-    const list = await this.listGateway.findById(id);
+    const list = await this.ListPersistenceGateway.findById(id);
     if (!list) {
       throw new NotFoundException(`List with id: ${id} not found`);
     }

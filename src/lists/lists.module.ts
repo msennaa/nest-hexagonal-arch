@@ -25,7 +25,7 @@ import { ListGatewayHttp } from './gateways/list-gateway-http';
     },
     {
       provide: 'ListIntegrationGateway',
-      useExisting: ListGatewaySequelize,
+      useExisting: ListGatewayHttp,
     },
   ],
 })
