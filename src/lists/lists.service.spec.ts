@@ -1,12 +1,6 @@
 import { List } from './entities/list.entity';
 import { ListsService } from './lists.service';
 
-const mockList = {
-  create: jest
-    .fn()
-    .mockReturnValue(Promise.resolve(new List({ name: 'my list' }))),
-};
-
 const mockHttpService = {
   post: jest.fn(),
 };
