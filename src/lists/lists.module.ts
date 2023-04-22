@@ -6,6 +6,8 @@ import { HttpModule } from '@nestjs/axios';
 import { ListModel } from './entities/list.model';
 import { ListGatewaySequelize } from './gateways/list-gateway-sequelize';
 import { ListGatewayHttp } from './gateways/list-gateway-http';
+import { CreatedListInCrmListener } from './listeners/created-list-in-crm.listener';
+import { EventEmitter2 } from '@nestjs/event-emitter';
 
 @Module({
   imports: [
@@ -19,6 +21,7 @@ import { ListGatewayHttp } from './gateways/list-gateway-http';
     ListsService,
     ListGatewaySequelize,
     ListGatewayHttp,
+    CreatedListInCrmListener,
     {
       provide: 'ListPersistenceGateway',
       useExisting: ListGatewaySequelize,
@@ -26,6 +29,10 @@ import { ListGatewayHttp } from './gateways/list-gateway-http';
     {
       provide: 'ListIntegrationGateway',
       useExisting: ListGatewayHttp,
+    },
+    {
+      provide: 'EventEmitter',
+      useExisting: EventEmitter2,
     },
   ],
 })

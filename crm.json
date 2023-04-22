@@ -1,24 +1,8 @@
 {
   "lists": [
     {
-      "name": "My List 1",
+      "name": "My list 1",
       "id": 1
-    },
-    {
-      "name": "My List 2",
-      "id": 2
-    },
-    {
-      "name": "My list 3",
-      "id": 3
-    },
-    {
-      "name": "My list 4",
-      "id": 4
-    },
-    {
-      "name": "My list 5",
-      "id": 5
     }
   ]
 }
