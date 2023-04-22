@@ -1,24 +1,24 @@
-import { HttpService } from '@nestjs/axios';
 import { Inject, Injectable, NotFoundException } from '@nestjs/common';
-import { lastValueFrom } from 'rxjs';
 import { CreateListDto } from './dto/create-list.dto';
 import { UpdateListDto } from './dto/update-list.dto';
 import { ListGatewayInterface } from './gateways/list-gateway-interface';
 import { List } from './entities/list.entity';
+import EventEmitter from 'events';
+import { ListCreatedEvent } from './events/list-created.event';
 
 @Injectable()
 export class ListsService {
   constructor(
     @Inject('ListPersistenceGateway')
     private ListPersistenceGateway: ListGatewayInterface,
-    @Inject('ListIntegrationGateway')
-    private ListIntegrationGateway: ListGatewayInterface,
+    @Inject('EventEmitter')
+    private eventEmitter: EventEmitter,
   ) {}
 
   async create(createListDto: CreateListDto) {
     const list = new List(createListDto.name);
     await this.ListPersistenceGateway.create(list);
-    await this.ListIntegrationGateway.create(list);
+    this.eventEmitter.emit('list.created', new ListCreatedEvent(list));
     return list;
   }
 
