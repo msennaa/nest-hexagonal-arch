@@ -21,7 +21,7 @@ import { EventEmitter2 } from '@nestjs/event-emitter';
     ListsService,
     ListGatewaySequelize,
     ListGatewayHttp,
-    CreatedListInCrmListener,
+    // CreatedListInCrmListener,
     {
       provide: 'ListPersistenceGateway',
       useExisting: ListGatewaySequelize,
