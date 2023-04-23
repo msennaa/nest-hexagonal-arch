@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { TweetsModule } from './tweets/tweets.module';
 import { SequelizeModule } from '@nestjs/sequelize';
 import { join } from 'path';
+import { DatabaseService } from './database/database.service';
 
 @Module({
   imports: [
@@ -16,6 +17,6 @@ import { join } from 'path';
     TweetsModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, DatabaseService],
 })
 export class AppModule {}
