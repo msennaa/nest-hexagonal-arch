@@ -3,8 +3,9 @@ version: '3'
 services:
   app:
     build: .
-    entrypoint: sh -c "npm install && npm run start:dev"
+    entrypoint: sh -c "rm -rf node_modules && rm -f package-lock.json && npm install && npm run start:dev"
     ports:
       - 3000:3000
     volumes:
       - .:/home/node/app
+
