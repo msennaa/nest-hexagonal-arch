@@ -6,10 +6,18 @@ import { SequelizeModule } from '@nestjs/sequelize';
 import { join } from 'path';
 import { DatabaseService } from './database/database.service';
 import { ScheduleModule } from '@nestjs/schedule';
+import { BullModule } from '@nestjs/bull';
+import { MailingModule } from './mailing/mailing.module';
 
 @Module({
   imports: [
     ScheduleModule.forRoot(),
+    BullModule.forRoot({
+      redis: {
+        host: 'redis',
+        port: 6379,
+      },
+    }),
     SequelizeModule.forRoot({
       dialect: 'sqlite',
       host: join(__dirname, 'database.sqlite'),
@@ -17,6 +25,7 @@ import { ScheduleModule } from '@nestjs/schedule';
       synchronize: true,
     }),
     TweetsModule,
+    MailingModule
   ],
   controllers: [AppController],
   providers: [AppService, DatabaseService],
