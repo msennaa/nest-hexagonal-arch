@@ -3,6 +3,8 @@ import { Tweet } from '../entities/tweet.entity';
 import { InjectModel } from '@nestjs/sequelize';
 import { Interval } from '@nestjs/schedule';
 import { CACHE_MANAGER } from '@nestjs/cache-manager';
+import { Queue } from 'bull';
+import { InjectQueue } from '@nestjs/bull';
 
 @Injectable()
 export class TweetsCountService {
@@ -12,6 +14,8 @@ export class TweetsCountService {
     private tweetModel: typeof Tweet,
     @Inject(CACHE_MANAGER)
     private cacheManager,
+    @InjectQueue('emails')
+    private emailsQueue: Queue,
   ) {}
 
   @Interval(5000)
@@ -33,6 +37,7 @@ export class TweetsCountService {
         ttl: 1 * 60 * 10,
       });
       console.log(`achou + ${this.limit} `);
+      this.emailsQueue.add({ tweets: tweets.map((t) => t.toJSON()) });
     }
   }
 }
