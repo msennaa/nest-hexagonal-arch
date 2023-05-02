@@ -32,13 +32,12 @@ Aqui tem um compilado das aulas sobre nestjs da fullcycle. O conteúdo vai do b�
   <summary>
     <strong>‼️ Os repositórios estão divididos de acordo com as aulas:</strong>
   </summary><br>
-
-  1. Arquitetura hexagonal com nestjs
-
-  2. Nestjs do básico ao avançado
-
-  3. Clean code com nestjs
   
+  1. [Hexagonal architecture com nestjs](https://www.youtube.com/watch?v=y4CayhdrSOY&ab_channel=FullCycle)
+
+  2. [Nestjs do básico ao avançado](https://www.youtube.com/watch?v=PHIMN85trgk&ab_channel=FullCycle)
+
+  3. [Clean architecture code com nestjs](https://www.youtube.com/watch?v=ZOyEFaBSEfk&t=2353s&ab_channel=FullCycle)
  </details>
 
 <details>
@@ -48,26 +47,4 @@ Aqui tem um compilado das aulas sobre nestjs da fullcycle. O conteúdo vai do b�
 
   Qualquer tipo de feedback é bem vindo para que eu possa continuar melhorando. 
    - **senamatheusjob@gmail.com**
-
-</details>
-
-<details>
-  <summary>
-    <b>O que será avaliado</b>
-  </summary>
-
-  - Se todos os campos estão preenchidos.
-    - Segue abaixo os retornos caso o preenchimento não seja o esperado
-    
-    ```json
-    { "message": "competitionName is required" }
-    ```
-    
-    ```json
-    { "message": "competitionName must be a string" }
-    ```
-    
-    ```json
-    { "message": "competitionName must be at least 3 characters" }
-    ```
 </details>
