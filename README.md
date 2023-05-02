@@ -35,9 +35,9 @@ Aqui tem um compilado das aulas sobre nestjs da fullcycle. O conteúdo vai do b�
 
   1. Arquitetura hexagonal com nestjs
 
-  2. Configuração das variáveis de ambiente
+  2. Nestjs do básico ao avançado
 
-    - Caso não queira utilizar variável de ambiente: Vá no arquivo src/database/config/database.ts e modifique manualmente.
+  3. Clean code com nestjs
   
  </details>
 
